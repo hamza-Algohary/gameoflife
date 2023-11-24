@@ -25,7 +25,19 @@ import static io.github.libsdl4j.api.video.SdlVideo.SDL_DestroyWindow;
 import static io.github.libsdl4j.api.video.SDL_WindowFlags.SDL_WINDOW_RESIZABLE;
 import static io.github.libsdl4j.api.video.SDL_WindowFlags.SDL_WINDOW_SHOWN;
 import static io.github.libsdl4j.api.video.SdlVideo.SDL_CreateWindow;
+import static io.github.libsdl4j.api.video.SdlVideo.SDL_SetWindowTitle;
 import static io.github.libsdl4j.api.video.SdlVideoConst.SDL_WINDOWPOS_CENTERED;
+
+
+//------------For Snake Main()--------------
+import io.github.libsdl4j.api.event.SDL_Event;
+import static io.github.libsdl4j.api.event.SDL_EventType.*;
+import static io.github.libsdl4j.api.event.SdlEvents.SDL_PollEvent;
+import static io.github.libsdl4j.api.keycode.SDL_Keycode.SDLK_UP;
+import static io.github.libsdl4j.api.keycode.SDL_Keycode.SDLK_DOWN;
+import static io.github.libsdl4j.api.keycode.SDL_Keycode.SDLK_RIGHT;
+import static io.github.libsdl4j.api.keycode.SDL_Keycode.SDLK_LEFT;
+//-------------------------------------------
 
 
 public class Window{
@@ -94,5 +106,9 @@ public class Window{
         SDL_DestroyTexture(texture);
         SDL_DestroyWindow(window);
         SDL_Quit();
+    }
+
+    public void setTitle(String title){
+        SDL_SetWindowTitle(window , title);
     }
 }
