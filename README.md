@@ -1,5 +1,29 @@
 # Java Lab Experiments
 
+This repository contains hands-on instructions for students to complete two cool graphical projects.
+
+# Learning Objectives
+
+- Familiarizing with a window API like SDL.
+- Learning to execute complex ideas using seemingly simple API.
+- Learning concepts such as main loop, and event handling.
+
+# Guide For Using This Document.
+
+1. Learn the API you are going to use.
+2. Understand the program requirments.
+3. Think about how you going to make the program using provided API.
+4. Read through the **To Do list** and complete each task one by one.
+
+# Tools
+- Java obviously.
+- [libsdl4j](https://github.com/libsdl4j/libsdl4j) (Which is a Java binding to SDL C library)
+- [Window.java](src/Window.java) (A class that wraps SDL functional SDL interface into an object oriented one, and hides unnecessary details.)
+- [JNA](https://github.com/java-native-access/jna) (Java Native Access) is a library that Window.java depends on.
+
+> [!NOTE]  
+> All the above is available in this repository so you just have to clone this repository and start from there.
+
 # Setup
 
 1. Clone This repository
