@@ -85,25 +85,29 @@ It's simply represented as an array of integers whose length is WIDTH*HEIGHT. wh
 
 # Project 1 - Explosion Simulation
 
-#### Task One
+### Description
 
-Using the above API try doing the following:
+Make a graphical scene that resembles an explosion, by making alot of randomly moving particles changing their colors.
+
+### Using the above API try doing the following:
 
 1. Create a new window.
 
-Problem 1: The program exits immediately.
+> [!IMPORTANT] 
+> Problem 1: The program exits immediately.
+> 
+> <details>
+> <summary>Solution</summary>
+>     Make a loop.
+> </details>
 
-<details>
-<summary>Solution</summary>
-    Make a loop.
-</details>
-
-Problem 2: Now window does not close.
-
-<details>
-<summary>Solution</summary>
-    Make the loop exit if close button is closed.
-</details>
+> [!IMPORTANT] 
+> Problem 2: Now window does not close.
+> 
+> <details>
+> <summary>Solution</summary>
+>     Make the loop exit if close button is closed.
+> </details>
 
 2. Color the Screen
 
@@ -112,13 +116,15 @@ Problem 2: Now window does not close.
     - Color the entire screen.
     - Implement fill() method inside Window class.
 
-Problem 3: How can you make the following effect?
+> [!IMPORTANT] 
+> Problem 3: How can you make the following effect?
 
 ![Green Transition](screenshots/demo1.gif)
 
 Hint: Use sin() as a function in t.
 
-Problem 4: Make the following effect
+> [!IMPORTANT] 
+> Problem 4: Make the following effect
 
 ![Color Transition](screenshots/colors-smooth.gif)
 
@@ -185,20 +191,19 @@ Snake{
         modify move()
     }
 ```
-
-Problem 4: How are you going to implement the tail of the snake.
-
-
-<details>
-<summary>Solution (Not a very good one) </summary>
-<br/>
-Make another buffer (2D int array) for the snake.
-When head of the snake reaches a certain coordinate, put the length of the tail in that coordinate. And on each iteration decrease the entire array by one except if its value is zero. Then when drawing the snake color the pixels of the screen which correspond to non zero in the snake buffer.
-
-<br/>
-Problems with that solution: Too high speed will make the snake non continuous. Too low speed will make the snake contract in length.
-
-</details>
+> [!IMPORTANT] 
+> Problem 4: How are you going to implement the tail of the snake.
+> 
+> <details>
+> <summary>Solution (Not a very good one) </summary>
+> <br/>
+> Make another buffer (2D int array) for the snake.
+> When head of the snake reaches a certain coordinate, put the length of the tail in that coordinate. And on each iteration decrease the entire array by one except if its value is zero. Then when drawing the snake color the pixels of the screen which correspond to non zero in the snake buffer.
+> 
+> <br/>
+> Problems with that solution: Too high speed will make the snake non continuous. Too low speed will make the snake contract in length.
+> 
+> </details>
 
 8. Write score on window title.
 8. Detect collisions.
