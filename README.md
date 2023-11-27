@@ -114,13 +114,13 @@ Problem 2: Now window does not close.
 
 Problem 3: How can you make the following effect?
 
-[Green Transition](screenshots/demo1.gif)
+![Green Transition](screenshots/demo1.gif)
 
 Hint: Use sin() as a function in t.
 
 Problem 4: Make the following effect
 
-[Color Transition](screenshots/colors-smooth.gif)
+![Color Transition](screenshots/colors-smooth.gif)
 
 3. Create Particle class
 ```
