@@ -83,15 +83,6 @@ View answer.
 It's simply represented as an array of integers whose length is WIDTH*HEIGHT. where each integer represents the color of a pixel. 
 </details>
 
-# Setup
-
-1. Clone This repository
-2. Make two copies
-3. Create a new window
-4. Add MainLoop
-5. Make window closable
-
-
 # Project 1 - Explosion Simulation
 
 #### Task One
