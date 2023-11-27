@@ -128,8 +128,10 @@ Particle{
     x , y
 }
 ```
-7. Create multiple particles
-8. Make particles move around
+
+- Create multiple particles
+- Color the particles only instead of the entire screen.
+- Make particles move around with random speed and direction.
 ```
 Particle{
     ....
@@ -137,7 +139,13 @@ Particle{
     move(duration)
 }
 ```
-9. Make particles start from origin
+- Make particles change their direction when they reach the edge of the window.
+- Make particles start from middle of the screen
+- Move particles again to middle of screen when they meet the edge of the window.
+
+4. **(BONUS)** Convert the particles coordinates into polar coordinates inorder to make them rotate.
+
+5. Make the particle's coordinates range from [-1:1] and scale while you are drawing. (Not necessary and has its drawbacks so you might skip it.)
 
 # Project 2 - Snake Game
 
@@ -177,12 +185,27 @@ Snake{
         modify move()
     }
 ```
+
+Problem 4: How are you going to implement the tail of the snake.
+
+
+<details>
+<summary>A Solution (Not a very good one) </summary>
+<br/>
+Make another buffer (2D int array) for the snake.
+When head of the snake reaches a certain coordinate, put the length of the tail in that coordinate. And on each iteration decrease the entire array by one except if its value is zero. Then when drawing the snake color the pixels of the screen which correspond to non zero in the snake buffer.
+
+<br/>
+Problems with that solution: Too high speed will make the snake non continuous. Too low speed will make the snake contract in length.
+
+</details>
+
 8. Write score on window title.
 8. Detect collisions.
 9. Stop game on collision.
-10. Prevent going back. 
+10. Prevent the snake from going back. 
 
-12. **BONUS: ** Make the snake and the target bigger.
+11. **(BONUS)** Make the snake and the target bigger.
 
 
 
