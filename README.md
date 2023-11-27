@@ -190,7 +190,7 @@ Problem 4: How are you going to implement the tail of the snake.
 
 
 <details>
-<summary>A Solution (Not a very good one) </summary>
+<summary>Solution (Not a very good one) </summary>
 <br/>
 Make another buffer (2D int array) for the snake.
 When head of the snake reaches a certain coordinate, put the length of the tail in that coordinate. And on each iteration decrease the entire array by one except if its value is zero. Then when drawing the snake color the pixels of the screen which correspond to non zero in the snake buffer.
