@@ -111,4 +111,14 @@ public class Window{
     public void setTitle(String title){
         SDL_SetWindowTitle(window , title);
     }
+
+    public boolean closeClicked(){
+        SDL_Event event = new SDL_Event();
+        while (SDL_PollEvent(event) != 0) {
+            if(event.type == SDL_QUIT)
+                return true;
+        }
+        return false;
+    }
+
 }
