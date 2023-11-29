@@ -88,7 +88,29 @@ We are going to use the two following fields:
 
 Look at closeClicked() implementation in [Window.java](src/Window.java) to see how quit event is handled using the above API.
 
-To get keyboard input, check if the event type is **SDL_KEYDOWN**, If so then you will find what key was pressed in the **key.keysym.sym** field
+```java
+public boolean closeClicked(){
+    SDL_Event event = new SDL_Event();
+    while (SDL_PollEvent(event) != 0) {
+        if(event.type == SDL_QUIT)
+            return true;
+    }
+    return false;
+}
+```
+
+To get keyboard input, check if the event type is **SDL_KEYDOWN**, If so then you will find what key was pressed in the **key.keysym.sym** field.
+
+```java
+while (SDL_PollEvent(event) != 0) {
+    if (event.type == SDL_KEYDOWN) {
+        if (event.key.keysym.sym == SDLK_UP)
+            System.out.println("Up was pressed");
+        else if (event.key.keysym.sym == SDLK_DOWN)
+            System.out.println("Down was pressed");
+    }
+}
+```
 
 # Try To Answer The Following
 
