@@ -75,9 +75,12 @@ public class Window{
 
     }
 
+    // Sets the color of one pixel inside the window
     public void setPixel(int x , int y , int red, int green, int blue){
         setPixel(x, y,  (byte) red, (byte) green, (byte) blue);
     }
+
+    // The same as the above.
     public void setPixel(int x , int y , byte red , byte green , byte blue){
         int index = (y*WIDTH + x)*PIXEL_SIZE;
         pixels.setByte(index, red);
@@ -86,6 +89,7 @@ public class Window{
         pixels.setByte(index+3, (byte)0xFF);
     }
 
+    // Display the changes made using setPixel.
     public void update(){
         SDL_UpdateTexture(texture, null, pixels, WIDTH*4);
         SDL_RenderClear(renderer);
@@ -101,6 +105,7 @@ public class Window{
         }
     }
 
+    // This method must be called at the end of the program
     public void close(){
         SDL_DestroyRenderer(renderer);
         SDL_DestroyTexture(texture);
@@ -108,10 +113,12 @@ public class Window{
         SDL_Quit();
     }
 
+    // Changes the title
     public void setTitle(String title){
         SDL_SetWindowTitle(window , title);
     }
 
+    // Checks if the close button was closed.
     public boolean closeClicked(){
         SDL_Event event = new SDL_Event();
         while (SDL_PollEvent(event) != 0) {

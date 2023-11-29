@@ -52,6 +52,15 @@ git clone https://github.com/hamza-Algohary/LabExperiment
 
 Each one of these functions is documented in the comments in [Window.java](src/Window.java) file.
 
+### Drawing
+
+To draw something inside the window:
+1. Use setPixel() to draw what you want.
+2. Use update() to make what you have drawn visible on the screen.
+3. Everytime you draw something don't forget to call update() method afterwards. Otherwise, it won't appear on the screen.
+
+You have to call close() at the end of the program.
+
 ### Event handling
 
 > [!NOTE]
@@ -296,7 +305,5 @@ Snake{
 - Prevent the snake from going back. 
 - **(BONUS)** Make the snake and the target bigger. (Hint: Make snake buffer dimensions less than that of the screen, and when drawing snake and target don't draw one pixel but instead a square of pixels, 9 pixels for example)
 
-
-
-
-
+# License 
+This project is licensed under the GPLv3.
