@@ -19,7 +19,7 @@ This repository contains hands-on instructions for students to complete two cool
 
 1. Learn the API you are going to use.
 2. Understand the program description and requirments.
-3. Think about how you going to make the program using provided API.
+3. Think about how you are going to make the program using provided API.
 4. Read through the **To Do list** and complete each task one by one.
 5. When you meet a problem try thinking about it before viewing the answer
 6. Do the assignment at the end of each project.
@@ -33,6 +33,11 @@ This repository contains hands-on instructions for students to complete two cool
 > [!NOTE]  
 > All the above is available in this repository so you just have to clone this repository and start from there.
 
+To clone this repository:
+```bash
+git clone https://github.com/hamza-Algohary/LabExperiment
+```
+
 # Learn the API 
 ### The Window class
 
@@ -45,10 +50,12 @@ This repository contains hands-on instructions for students to complete two cool
         setTitle()
     }
 
-Each one of these functions is documented in the comments in Window.java
+Each one of these functions is documented in the comments in [Window.java](src/Window.java) file.
 
 ### Event handling
-Only read this section when you are starting the second project.
+
+> [!NOTE]
+> Only read this section when you are starting the second project.
 
 An event might be a mouse click, keyboard input, close button clicked and other things.
 
@@ -70,7 +77,7 @@ We are going to use the two following fields:
         key.keysym.sym // The keyboard button that was pressed if any. Possible values: SDLK_UP, SDLK_DOWN, SDLK_RIGHT, SDLK_LEFT. 
     }
 
-Look at closeClicked() implementation in Window class to see how quit event is handled using the above API.
+Look at closeClicked() implementation in [Window.java](src/Window.java) to see how quit event is handled using the above API.
 
 To get keyboard input, check if the event type is **SDL_KEYDOWN**, If so then you will find what key was pressed in the **key.keysym.sym** field
 
@@ -85,7 +92,7 @@ View answer.
 </summary>
 
 Colors are usually represented using RGB format which stands for Red Green Blue. Where every color is represented using four bytes (red, green, blue, alpha).
-Alpha is transparency. Since it needs four bytes we can use int to represent a color
+Alpha is transparency. Since it needs four bytes we can use **int** to represent a color
 </details>
 
 ### Question 2: How is Window pixel buffer represented in memory.
@@ -222,7 +229,7 @@ Target{
 }
 ```
 > [!NOTE] 
-> Both Snake and Particle class are going to behave like class Particle that was created in the previous experiment. The snake will start from the middle of the screen and move to a specific direction, and the target will be put at a random location and will not move.
+> Both Snake and Target class are going to behave like class Particle that was created in the previous experiment. The snake will start from the middle of the screen and move to a specific direction, and the target will be put at a random location and will not move.
 
 - Make Objects from both Snake and Target class and color them on screen (different colors)
 - Make snake direction controllable by keyboard.
@@ -286,8 +293,8 @@ Snake{
 
 ### Assignment
 
-11. Prevent the snake from going back. 
-12. **(BONUS)** Make the snake and the target bigger. (Hint: Make snake buffer dimensions less than that of the screen, and when drawing snake and target don't draw one pixel but instead a square of pixels, 9 pixels for example)
+- Prevent the snake from going back. 
+- **(BONUS)** Make the snake and the target bigger. (Hint: Make snake buffer dimensions less than that of the screen, and when drawing snake and target don't draw one pixel but instead a square of pixels, 9 pixels for example)
 
 
 
