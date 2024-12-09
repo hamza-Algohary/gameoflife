@@ -28,6 +28,8 @@ import static io.github.libsdl4j.api.video.SdlVideo.SDL_CreateWindow;
 import static io.github.libsdl4j.api.video.SdlVideo.SDL_SetWindowTitle;
 import static io.github.libsdl4j.api.video.SdlVideoConst.SDL_WINDOWPOS_CENTERED;
 
+import java.util.LinkedList;
+import java.util.Queue;
 
 //------------For Snake Main()--------------
 import io.github.libsdl4j.api.event.SDL_Event;
@@ -47,6 +49,7 @@ public class Window{
     Pointer pixels;
     public final int WIDTH , HEIGHT;
     public final int PIXEL_SIZE = 4;
+    public final Queue<SDL_Event> eventsQueue = new LinkedList<SDL_Event>();
 
     public int numberOfPixels(){
         return WIDTH*HEIGHT;
@@ -127,5 +130,22 @@ public class Window{
         }
         return false;
     }
+
+    private void pollAllEvents() {
+        while (true) {
+            SDL_Event event = new SDL_Event(); 
+            if(SDL_PollEvent(event) == 0 )
+                break;
+            eventsQueue.add(event);
+        }
+    }
+
+    public boolean eventOccurred() {
+        pollAllEvents();
+        return !eventsQueue.isEmpty();
+    }
     
+    public SDL_Event nextEvent() {
+        return eventsQueue.poll();
+    }
 }
