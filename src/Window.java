@@ -152,7 +152,16 @@ public class Window{
     }
 
     //---------------------Extra Methods------------------
-
+    public void colorSquare(int x , int y , int dimension , int red , int green , int blue) {
+        for (int i = x ; i<x+dimension ; i++) {
+            for (int j=y ; j<y+dimension ; j++) {
+                if(i<0 || j<0 || i>=WIDTH || j>=HEIGHT){
+                    continue;
+                }
+                setPixel(i, j, red, green, blue);
+            }
+        }
+    }
 
     public class Point {
         int x;
