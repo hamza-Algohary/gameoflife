@@ -1,6 +1,8 @@
 import io.github.libsdl4j.api.render.SDL_Renderer;
 import io.github.libsdl4j.api.render.SDL_Texture;
 import io.github.libsdl4j.api.video.SDL_Window;
+import io.github.libsdl4j.api.mouse.SDL_ButtonMask;
+import io.github.libsdl4j.api.mouse.*;
 
 import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
@@ -31,7 +33,6 @@ import static io.github.libsdl4j.api.video.SdlVideoConst.SDL_WINDOWPOS_CENTERED;
 import java.util.LinkedList;
 import java.util.Queue;
 
-//------------For Snake Main()--------------
 import io.github.libsdl4j.api.event.SDL_Event;
 import static io.github.libsdl4j.api.event.SDL_EventType.*;
 import static io.github.libsdl4j.api.event.SdlEvents.SDL_PollEvent;
@@ -39,7 +40,8 @@ import static io.github.libsdl4j.api.keycode.SDL_Keycode.SDLK_UP;
 import static io.github.libsdl4j.api.keycode.SDL_Keycode.SDLK_DOWN;
 import static io.github.libsdl4j.api.keycode.SDL_Keycode.SDLK_RIGHT;
 import static io.github.libsdl4j.api.keycode.SDL_Keycode.SDLK_LEFT;
-//-------------------------------------------
+import static io.github.libsdl4j.api.keycode.SDL_Keycode.SDLK_SPACE;
+
 
 
 public class Window{
@@ -147,5 +149,22 @@ public class Window{
     
     public SDL_Event nextEvent() {
         return eventsQueue.poll();
+    }
+
+    //---------------------Extra Methods------------------
+    public void colorSquare(int x , int y , int dimension , int red , int green , int blue) {
+        for (int i = x ; i<x+dimension ; i++) {
+            for (int j=y ; j<y+dimension ; j++) {
+                if(i<0 || j<0 || i>=WIDTH || j>=HEIGHT){
+                    continue;
+                }
+                setPixel(i, j, red, green, blue);
+            }
+        }
+    }
+
+    public class Point {
+        int x;
+        int y;
     }
 }
