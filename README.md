@@ -1,9 +1,4 @@
-# Java Lab Experiments
-
-This repository contains hands-on instructions for students to complete two cool graphical projects.
-
-- **First Project:** Explosion simulation.
-- **Second Project:** Snake game.
+# Tutorial: Conway's Game Of Life in Java 
 
 # Requiremnets
 - Basic knowledge of Java (variables, IO, conditionals, loops)
@@ -48,6 +43,8 @@ git clone https://github.com/hamza-Algohary/LabExperiment
         close()
         closeClicked()
         setTitle()
+        eventOccurred()
+        nextEvent()
     }
 
 Each one of these functions is documented in the comments in [Window.java](src/Window.java) file.
@@ -63,20 +60,13 @@ You have to call close() at the end of the program.
 
 ### Event handling
 
-> [!NOTE]
-> Only read this section when you are starting the second project.
-
 An event might be a mouse click, keyboard input, close button clicked and other things.
 
-To know if an event happend call SDL_PollEvent() method.
+To know if an event happend call eventOccurred() method.
 
-```java
-int SDL_PollEvent(SDL_Event event)
-```
-    
-If there are pending events, it puts the next event in the **event** object and returns 1.
+If there are pending events, it returns true, otherwise false.
 
-If there are no pending events it returns 0 and assigns **event** to null.
+To get next event use nextEvent()
 
 Where **SDL_Event** is a type reprensting an event. 
 We are going to use the two following fields:
@@ -86,31 +76,8 @@ We are going to use the two following fields:
         key.keysym.sym // The keyboard button that was pressed if any. Possible values: SDLK_UP, SDLK_DOWN, SDLK_RIGHT, SDLK_LEFT. 
     }
 
-Look at closeClicked() implementation in [Window.java](src/Window.java) to see how quit event is handled using the above API.
-
-```java
-public boolean closeClicked(){
-    SDL_Event event = new SDL_Event();
-    while (SDL_PollEvent(event) != 0) {
-        if(event.type == SDL_QUIT)
-            return true;
-    }
-    return false;
-}
-```
-
 To get keyboard input, check if the event type is **SDL_KEYDOWN**, If so then you will find what key was pressed in the **key.keysym.sym** field.
 
-```java
-while (SDL_PollEvent(event) != 0) {
-    if (event.type == SDL_KEYDOWN) {
-        if (event.key.keysym.sym == SDLK_UP)
-            System.out.println("Up was pressed");
-        else if (event.key.keysym.sym == SDLK_DOWN)
-            System.out.println("Down was pressed");
-    }
-}
-```
 
 # Try To Answer The Following
 
@@ -170,11 +137,13 @@ Think about how are you going to implement this program using provided API, then
 - Color one pixel.
 - Color multiple pixels.
 - Color the entire screen.
-- Implement fill() method inside Window class.
+- Implement fill() method.
+- Implement colorSquare() method inside Window class.
 
 ```
 Window{
     fill(red , green , blue)
+    colorSquare( x ,  y , dimension , red , green , blue)
     // A method to color the entire screen
 }
 ```
@@ -199,133 +168,3 @@ Make the window's color change gradually from green to black then gradually to g
 Make the window switch between different colors gradually.
 ![Color Transition](screenshots/colors-smooth.gif)
 
-### 3. Create Particle class (A class to represent a point on the screen)
-```
-Particle{
-    x , y
-}
-```
-- Assign a random value to both x and y.
-- Create multiple particles (make an array of particle objects)
-- Color the particles only instead of the entire screen.
-- Make particles move around with random speed and direction.
-```
-Particle{
-    ....
-    speedX , speedY
-    move(duration)
-}
-```
-> [!IMPORTANT] 
-> Problem 5: How are you going to make particles move?
-> <details>
-> <summary>Solution</summary>
->     Implement move() method in the Particle class. This method takes as an argument the amount of time between each frame. It the update the position in x and y according to speed and time elapsed.
->
-> Remeber: displacement = speed*duration.
-> </details>
-
-- Make particles change their direction when they reach the edge of the window. (This is a modification in move() method)
-
-- Make particles start from middle of the screen instead of a random position.
-- Move particles again to middle of screen when they meet the edge of the window.
-
-### Assignment (Bonus)
-- Convert the particles coordinates into polar coordinates inorder to make them rotate.
-
-- Make the particle's coordinates range from [-1:1] and scale while you are drawing. (Not necessary and has its drawbacks so you might skip it.)
-
-# Project 2 - Snake Game
-
-### Revise the Event Handling section before proceeding.
-
-### Building on the same logic used in Particle class in the previous experiment.
-
-- Handle Keyboard events and test that it's working
-
-Example:
-When any of the arrows keys is pressed print to console what was pressed.
-
-- Create Snake class
-```
-Snake{
-    x , y , speed , direction
-    move()
-}
-```
-- Create Target class
-```
-Target{
-    x , y
-}
-```
-> [!NOTE] 
-> Both Snake and Target class are going to behave like class Particle that was created in the previous experiment. The snake will start from the middle of the screen and move to a specific direction, and the target will be put at a random location and will not move.
-
-- Make Objects from both Snake and Target class and color them on screen (different colors)
-- Make snake direction controllable by keyboard.
-- Change the location of target when it's eaten.
-
-### Adding a tail to the snake
-- Add the field tailLength to the snake class.
-```
-Snake{
-    ....
-    tailLength
-}
-```
-- Draw Snake tail. How?
-
-> [!IMPORTANT] 
-> Problem 6: How are you going to implement the tail of the snake.
-> 
-> <details>
-> <summary>Solution (Not a very good one) </summary>
-> <br/>
-> Make another buffer (2D int array) for the snake.
-> When head of the snake reaches a certain coordinate, put the length of the tail in that coordinate. And on each iteration decrease the entire array by one except if its value is zero. Then when drawing the snake color the pixels of the screen which correspond to non zero in the snake buffer.
-> 
-> <br/>
-> Problems with that solution: Too high speed will make the snake non continuous. Too low speed will make the snake contract in length.
->
-> ```
-> Snake{
->     ....
->     buffer[][]
->     draw()
->     modify move()
-> }
-> ``` 
->
-> </details>
-
-
-- Write score on window title. (You might make the score equal to current snake length.)
-
-### Detecting when the snake collides with itself.
-
-> [!IMPORTANT] 
-> Problem 5: When does a collision happen?
-> <details>
-> <summary>Answer</summary>
-> A collision happens when the next location of the head is already occupied by the body (ie: It's a non zero value in snake buffer)
-> </details>
-
-- Add the following field to snake class
-```
-Snake{
-    ...
-    boolean collided
-}
-```
-- In move method if a collision happens make collided = true
-
-- Stop game on collision and change the window title to "You Lost".
-
-### Assignment
-
-- Prevent the snake from going back. 
-- **(BONUS)** Make the snake and the target bigger. (Hint: Make snake buffer dimensions less than that of the screen, and when drawing snake and target don't draw one pixel but instead a square of pixels, 9 pixels for example)
-
-# License 
-This project is licensed under the GPLv3.
