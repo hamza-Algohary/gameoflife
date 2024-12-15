@@ -1,1 +1,1 @@
-java -cp "./lib:./lib/libsdl4j-2.28.4-1.6.jar:./lib/jna-5.13.0.jar:./build" Main
+java -cp "./lib;./lib/libsdl4j-2.28.4-1.6.jar;./lib/jna-5.13.0.jar;./build" Main
